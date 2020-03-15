@@ -25,6 +25,7 @@ namespace ProgramaFacturacionV1
             int doc;
             string datoModificar;
             int idFactura;
+            string fecha;
 
 
             while (seguir != "no")
@@ -493,7 +494,7 @@ namespace ProgramaFacturacionV1
                     //////Console.WriteLine("(1) Agregar Factura (2) listar todas las facturas");
                     rtaFacturar = int.Parse(Console.ReadLine());
 
-                    idFactura = listaFacturas.Count + 1;
+                    //idFactura = listaFacturas.Count + 1;
 
                     if (rtaFacturar == 1)
                     {
@@ -502,30 +503,62 @@ namespace ProgramaFacturacionV1
 
                         Console.WriteLine(" _________________________________________");
                         Console.WriteLine("|                                         |");
+                        Console.WriteLine("|         Ingrese la Fecha factura:       |");
+                        Console.WriteLine("|_________________________________________|");
+                        fecha = Console.ReadLine();
+                        idFactura = listaFacturas.Count + 1;
+
+                        Console.WriteLine(" _________________________________________");
+                        Console.WriteLine("|                                         |");
                         Console.WriteLine("|    Ingrese el documento del cliente     |");
                         Console.WriteLine("|_________________________________________|");
                         //Console.WriteLine("Ingrese el documento del cliente");
                         int idCliente = int.Parse(Console.ReadLine());
 
+                        //factura.idFactura = idFactura;
+                        //factura.fecha = fecha;
+                        //factura.IdCliente = idCliente;
+
+                        
                         for (int i = 0; i < listaClientes.Count; i++)
                         {
                             if (idCliente == listaClientes[i].documento)
                             {
 
-                                //foreach (Cliente client in listaClientes)
-                                //{
-                                //    //Console.WriteLine("nombre: " + client.NombreCliente
-                                //    //  + " documento: " + client.Documento
-                                //    //  + " telefono: " + client.Telefono
-                                //    //  + " edad: " + client.Edad
-                                //    //  + " estado: " + client.Estado);
-                                //    factura.listaClientes.Add();
-                                //}
+                                foreach (Cliente client in listaClientes)
+                                {
+                                    //Console.WriteLine("nombre: " + client.NombreCliente
+                                    //  + " documento: " + client.Documento
+                                    //  + " telefono: " + client.Telefono
+                                    //  + " edad: " + client.Edad
+                                    //  + " estado: " + client.Estado);
+                                    //listaFacturas.Add(factura);
+                                }
 
                             }
                         }
+                        Console.WriteLine("Ingrese el codigo del producto comprado");
+                        int CodProd = int.Parse(Console.ReadLine());
+                        for (int i = 0; i < listaProductos.Count; i++)
+                        {
+                            if (CodProd == listaProductos[i].idProducto)
+                            {
+                                foreach (var produc in listaProductos)
+                                {
+                                    //Console.WriteLine("------------Productos Comprados--------");
+                                    //Console.WriteLine("Codigo Producto " + produc.IdProducto
+                                    //    + " Nombre Producto " + produc.NombreProducto
+                                    //    + " Valor Producto " + produc.Valor);
+                                    //listaFacturas.Add(factura);
+                                }
+                            }
 
-
+                        }
+                        factura.idFactura = idFactura;
+                        factura.fecha = fecha;
+                        factura.IdCliente = idCliente;
+                        
+                        listaFacturas.Add(factura);
                     }
                     else if (rtaFacturar == 2)
                     {
@@ -552,8 +585,19 @@ namespace ProgramaFacturacionV1
                             {
                                 if (fact.idFactura == doc)
                                 {
-                                    Console.WriteLine("número factura: " + fact.idFactura
-                                   + " cliente: " + fact.IdCliente);
+                                    Console.WriteLine(" _________________________________________");
+                                    Console.WriteLine("|                                         |");
+                                    Console.WriteLine("| número factura: " + fact.idFactura);
+                                    Console.WriteLine("| Fecha : " + fact.fecha);
+                                    Console.WriteLine("|                                         |");
+                                    Console.WriteLine("|_________________________________________|");
+                                    // Console.WriteLine("número factura: " + fact.idFactura
+                                    //+ " Fecha : " + fact.fecha
+                                    //+ " Cliente : " + fact.listaClientes);
+
+                                    
+
+
 
                                 }
                             }
@@ -565,9 +609,18 @@ namespace ProgramaFacturacionV1
 
                             foreach (var fact in listaFacturas)
                             {
-                                Console.WriteLine("número factura: " + fact.idFactura
-                                  + " cliente: " + fact.IdCliente);
+                                Console.WriteLine(" _________________________________________");
+                                Console.WriteLine("|                                         |");
+                                Console.WriteLine("| número factura: " + fact.idFactura);
+                                Console.WriteLine("| Fecha : " + fact.fecha);
+                                Console.WriteLine("|                                         |" + fact.IdCliente);
+                                Console.WriteLine("|_________________________________________|");
+                                //Console.WriteLine("número factura: " + fact.idFactura
+                                //   + " Fecha : " + fact.fecha
+                                //   + " Cliente : " + fact.listaClientes);
                             }
+                           
+
 
                         }
 
